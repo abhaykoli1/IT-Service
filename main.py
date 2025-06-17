@@ -6,9 +6,10 @@ from fastapi.security import HTTPBasic, HTTPBasicCredentials
 from fastapi.openapi.docs import get_swagger_ui_html
 from fastapi.openapi.utils import get_openapi
 from mongoengine import connect
+import os
 from fastapi.responses import RedirectResponse
 import secrets
-import os
+
 
 # Import routers
 from Zodex.Counters.routes import CounterRoutes
@@ -21,7 +22,17 @@ from Zodex.prices.routes import price_router
 from Zodex.work.routes import work_router
 
 # MongoDB connection
-connect('Zodexweb', host="mongodb+srv://avbigbuddy:nZ4ATPTwJjzYnm20@cluster0.wplpkxz.mongodb.net/Zodexweb")
+# connect('Zodexweb', host="mongodb+srv://avbigbuddy:nZ4ATPTwJjzYnm20@cluster0.wplpkxz.mongodb.net/Zodexweb")
+
+def connect_to_mongo():
+    try:
+        mongo_uri = os.getenv("MONGO_URI", "mongodb+srv://avbigbuddy:nZ4ATPTwJjzYnm20@cluster0.wplpkxz.mongodb.net/Zodexweb")
+        connect('Zodexweb', host=mongo_uri)
+        print("✅ MongoDB connected successfully")
+    except Exception as e:
+        print("❌ MongoDB connection failed:", e)
+
+connect_to_mongo()
 
 # Disable default docs
 app = FastAPI(docs_url=None, redoc_url=None)
