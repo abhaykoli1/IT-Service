@@ -105,10 +105,17 @@ def fallback_static(full_path: str):
         return FileResponse(index_path)
     return {"error": "Resource not found"}
 
+
 # Only used for local dev
+# if __name__ == "__main__":
+#     import uvicorn
+#     uvicorn.run("main:app", host="0.0.0.0", port=8080, reload=True)
+
+# Live
 if __name__ == "__main__":
     import uvicorn
-    uvicorn.run("main:app", host="0.0.0.0", port=8080, reload=True)
+    port = int(os.environ.get("PORT", 8080))  # Use $PORT for Render, fallback to 8080
+    uvicorn.run("main:app", host="0.0.0.0", port=port)
 
 
 # main.py
