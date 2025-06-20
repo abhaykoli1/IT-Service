@@ -111,6 +111,7 @@ def fallback_static(full_path: str):
 #     import uvicorn
 #     uvicorn.run("main:app", host="0.0.0.0", port=8080, reload=True)
 
+
 # Live
 if __name__ == "__main__":
     import uvicorn
@@ -118,16 +119,3 @@ if __name__ == "__main__":
     uvicorn.run("main:app", host="0.0.0.0", port=port)
 
 
-# main.py
-
-# from fastapi import FastAPI
-# from mongoengine import connect
-
-# app = FastAPI()
-
-# # Connect to MongoDB
-# connect("Zodexweb", host="your-mongo-uri-here")
-
-# @app.get("/")
-# def root():
-#     return {"message": "Zodex API Live!"}
