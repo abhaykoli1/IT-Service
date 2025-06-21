@@ -19,6 +19,7 @@ from Zodex.blogs.routes import blogs_routes
 from Zodex.prices.routes import price_router
 from Zodex.work.routes import work_router
 
+#   New Upadate
 # Initialize FastAPI (disable default docs)
 app = FastAPI(docs_url=None, redoc_url=None)
 
