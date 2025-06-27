@@ -109,7 +109,7 @@ def fallback_static(full_path: str):
         return FileResponse(index_path)
     return {"error": "Resource not found"}
 
-
+# Nerawa
 # Only used for local dev
 # if __name__ == "__main__":
 #     import uvicorn
