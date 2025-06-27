@@ -19,7 +19,7 @@ from Zodex.blogs.routes import blogs_routes
 from Zodex.prices.routes import price_router
 from Zodex.work.routes import work_router
 
-#   New Upadate
+
 # Initialize FastAPI (disable default docs)
 app = FastAPI(docs_url=None, redoc_url=None)
 
@@ -63,9 +63,11 @@ def verify_credentials(credentials: HTTPBasicCredentials = Depends(security)):
 async def get_documentation(username: str = Depends(verify_credentials)):
     return get_swagger_ui_html(openapi_url="/openapi.json", title="Zodex API Docs")
 
+
 @app.get("/openapi.json", include_in_schema=False)
 async def openapi(username: str = Depends(verify_credentials)):
     return JSONResponse(get_openapi(title="Zodex API", version="1.0.0", routes=app.routes))
+
 
 @app.get("/logout")
 def logout():
@@ -99,6 +101,7 @@ def serve_root():
     return {"message": "index.html not found"}
 
 # Wildcard fallback (optional - can break API if not careful)
+
 @app.get("/{full_path:path}")
 def fallback_static(full_path: str):
     index_path = os.path.join("frontend", "index.html")
