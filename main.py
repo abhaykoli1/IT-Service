@@ -93,6 +93,7 @@ app.include_router(contact_router.router, tags=["Contact Query"])
 app.mount("/assets", StaticFiles(directory="frontend/assets"), name="assets")
 
 # Fallback to serve React/HTML frontend
+
 @app.get("/")
 def serve_root():
     index_path = os.path.join("frontend", "index.html")
@@ -108,6 +109,7 @@ def fallback_static(full_path: str):
     if os.path.exists(index_path):
         return FileResponse(index_path)
     return {"error": "Resource not found"}
+
 
 # Nerawa
 # Only used for local dev
