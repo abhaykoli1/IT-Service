@@ -5,8 +5,8 @@ from typing import List
 # MongoEngine Model
 class TechCard(Document):
     image = StringField(required=True)  # Image path or URL
-    techStack = ListField(StringField(), required=True)
     title = StringField(required=True)
+    techStack = ListField(StringField(), required=True)
     link = StringField(required=True)
     meta = {'collection': 'techcards'}
 

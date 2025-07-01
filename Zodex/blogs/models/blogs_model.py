@@ -14,7 +14,7 @@ class BlogTable(Document):
     short_desc = StringField(required=True)
     desc = StringField(required=True)
     tag = StringField(required=True)
-    category = ReferenceField(CategoryTable, required=True)  # ✅ Reference to Category
+    category = ReferenceField(CategoryTable, required=True)  
     created_at = DateTimeField(default=datetime.utcnow)
     updated_at = DateTimeField(default=datetime.utcnow)
 
